@@ -1,9 +1,12 @@
+using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,15 @@ namespace GoshenJimenez.Mercadia3.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<DefaultDbContext>(
+                options => options.UseMySql(Configuration.GetConnectionString("DbContextMySQL"),
+                    mysqlOptions => {
+                        mysqlOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+                        mysqlOptions.ServerVersion(new Version(10, 4, 6), ServerType.MariaDb);
+                        mysqlOptions.MigrationsAssembly(typeof(Startup).Namespace);
+                    }
+            ));
+
             services.AddControllersWithViews();
         }
 
