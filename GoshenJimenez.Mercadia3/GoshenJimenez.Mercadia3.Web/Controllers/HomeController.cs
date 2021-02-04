@@ -1,4 +1,4 @@
-﻿using GoshenJimenez.Mercadia3.Web.Models;
+﻿using GoshenJimenez.Mercadia3.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;

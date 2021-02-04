@@ -58,3 +58,4 @@ C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs

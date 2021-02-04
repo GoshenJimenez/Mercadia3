@@ -1,6 +1,6 @@
 using System;
 
-namespace GoshenJimenez.Mercadia3.Web.Models
+namespace GoshenJimenez.Mercadia3.Web.ViewModels
 {
     public class ErrorViewModel
     {

@@ -21,13 +21,13 @@ using GoshenJimenez.Mercadia3.Web;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\Views\_ViewImports.cshtml"
-using GoshenJimenez.Mercadia3.Web.Models;
+using GoshenJimenez.Mercadia3.Web.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ab1bcdd25941b979e1253f70ef9c56f4705a0cf1", @"/Views/Home/ProductSearch.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cb4cced5eac2fe7d7fe416c4d3388ed27c4c09d2", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"727d8f78536bee715abe8dcffae1654aa5fe3356", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_ProductSearch : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("rel", new global::Microsoft.AspNetCore.Html.HtmlString("stylesheet"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -67,9 +67,9 @@ using GoshenJimenez.Mercadia3.Web.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab1bcdd25941b979e1253f70ef9c56f4705a0cf14630", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab1bcdd25941b979e1253f70ef9c56f4705a0cf14634", async() => {
                 WriteLiteral("\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ab1bcdd25941b979e1253f70ef9c56f4705a0cf14892", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ab1bcdd25941b979e1253f70ef9c56f4705a0cf14896", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -96,7 +96,7 @@ using GoshenJimenez.Mercadia3.Web.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab1bcdd25941b979e1253f70ef9c56f4705a0cf16778", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab1bcdd25941b979e1253f70ef9c56f4705a0cf16782", async() => {
                 WriteLiteral(@"
         <h1>Welcome to Mercadia</h1>
         <span>This is my text</span>

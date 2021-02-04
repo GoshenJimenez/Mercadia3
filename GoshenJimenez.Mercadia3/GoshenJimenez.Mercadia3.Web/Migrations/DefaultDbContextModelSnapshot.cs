@@ -41,6 +41,29 @@ namespace GoshenJimenez.Mercadia3.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("02b92adc-c0dc-4a87-9aa8-df5d90cf2a00"),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 499, DateTimeKind.Utc).AddTicks(2886),
+                            Name = "Category 1",
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 499, DateTimeKind.Utc).AddTicks(2931)
+                        },
+                        new
+                        {
+                            Id = new Guid("02b92adc-c0dc-4a87-9aa8-df5d90cf2a01"),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 499, DateTimeKind.Utc).AddTicks(6111),
+                            Name = "Category 2",
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 499, DateTimeKind.Utc).AddTicks(6135)
+                        },
+                        new
+                        {
+                            Id = new Guid("02b92adc-c0dc-4a87-9aa8-df5d90cf2a02"),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 499, DateTimeKind.Utc).AddTicks(6216),
+                            Name = "Category 3",
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 499, DateTimeKind.Utc).AddTicks(6219)
+                        });
                 });
 
             modelBuilder.Entity("GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models.Product", b =>
@@ -75,6 +98,41 @@ namespace GoshenJimenez.Mercadia3.Web.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("254a99bb-bee5-43e0-80dc-e76622110500"),
+                            CategoryId = new Guid("02b92adc-c0dc-4a87-9aa8-df5d90cf2a00"),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 500, DateTimeKind.Utc).AddTicks(1260),
+                            Description = "Palmolive Naturals White with Milk Whitening Bar Soap 80g 2+1 Value Pack",
+                            Name = "Product 1 Soap",
+                            Price = 0m,
+                            TagLine = "Pag di ka pumuti, iitim ka.",
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 500, DateTimeKind.Utc).AddTicks(1275)
+                        },
+                        new
+                        {
+                            Id = new Guid("254a99bb-bee5-43e0-80dc-e76622110501"),
+                            CategoryId = new Guid("02b92adc-c0dc-4a87-9aa8-df5d90cf2a00"),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 501, DateTimeKind.Utc).AddTicks(254),
+                            Description = "Global Version Xiaomi Redmi 9A Smartphones 2GB RAM 32GB ROM 6.53″ Intelligent Face Unlock Xiaomi Mall",
+                            Name = "Product 2 Cellphone",
+                            Price = 0m,
+                            TagLine = "Pang ML",
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 501, DateTimeKind.Utc).AddTicks(281)
+                        },
+                        new
+                        {
+                            Id = new Guid("254a99bb-bee5-43e0-80dc-e76622110502"),
+                            CategoryId = new Guid("02b92adc-c0dc-4a87-9aa8-df5d90cf2a00"),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 501, DateTimeKind.Utc).AddTicks(441),
+                            Description = "Marby Mini Monay 250g",
+                            Name = "Product 3 Bread",
+                            Price = 0m,
+                            TagLine = "Busog ka agad",
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 501, DateTimeKind.Utc).AddTicks(444)
+                        });
                 });
 
             modelBuilder.Entity("GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models.ProductTag", b =>
@@ -127,23 +185,23 @@ namespace GoshenJimenez.Mercadia3.Web.Migrations
                         new
                         {
                             Id = new Guid("32febb22-f596-4b1e-b0a8-b11ad54be200"),
-                            CreatedAt = new DateTime(2021, 1, 28, 1, 50, 50, 559, DateTimeKind.Utc).AddTicks(5627),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 492, DateTimeKind.Utc).AddTicks(9811),
                             Name = "Tag 1",
-                            UpdatedAt = new DateTime(2021, 1, 28, 1, 50, 50, 559, DateTimeKind.Utc).AddTicks(6846)
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 493, DateTimeKind.Utc).AddTicks(1285)
                         },
                         new
                         {
                             Id = new Guid("32febb22-f596-4b1e-b0a8-b11ad54be201"),
-                            CreatedAt = new DateTime(2021, 1, 28, 1, 50, 50, 560, DateTimeKind.Utc).AddTicks(565),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 493, DateTimeKind.Utc).AddTicks(6325),
                             Name = "Tag 2",
-                            UpdatedAt = new DateTime(2021, 1, 28, 1, 50, 50, 560, DateTimeKind.Utc).AddTicks(594)
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 493, DateTimeKind.Utc).AddTicks(6354)
                         },
                         new
                         {
                             Id = new Guid("32febb22-f596-4b1e-b0a8-b11ad54be203"),
-                            CreatedAt = new DateTime(2021, 1, 28, 1, 50, 50, 560, DateTimeKind.Utc).AddTicks(662),
+                            CreatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 493, DateTimeKind.Utc).AddTicks(6429),
                             Name = "Tag 3",
-                            UpdatedAt = new DateTime(2021, 1, 28, 1, 50, 50, 560, DateTimeKind.Utc).AddTicks(665)
+                            UpdatedAt = new DateTime(2021, 2, 4, 2, 25, 27, 493, DateTimeKind.Utc).AddTicks(6431)
                         });
                 });
 
