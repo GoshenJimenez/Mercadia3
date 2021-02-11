@@ -132,3 +132,4 @@ C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Views\Products\Product.cshtml.g.cs
+C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_partialHeader.cshtml.g.cs
