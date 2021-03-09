@@ -1,0 +1,31 @@
+﻿@model GoshenJimenez.Mercadia3.Web.Areas.Manage.ViewModels.Products.UpdateViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<form action="/manage/products/update" method="post" class="form">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="name" asp-for="Name" name="Name" placeholder="Enter product name" value="@Model.Name">
+    </div>
+    <div class="form-group">
+        <label for="TagLine">TagLine</label>
+        <input type="text" class="form-control" id="tagLine" asp-for="TagLine" name="TagLine" placeholder="Enter product brief description" value="@Model.TagLine">
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea asp-for="Description" class="form-control" id="description" name="Description" placeholder="Enter product full description">
+            @Model.Description
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="Price">Price</label>
+        <input type="number" class="form-control" id="price" asp-for="Price" name="Price" placeholder="Enter product price" value="@Model.Price">
+    </div>
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="~/manage/products" class="btn btn-danger">Cancel</a>
+</form>
