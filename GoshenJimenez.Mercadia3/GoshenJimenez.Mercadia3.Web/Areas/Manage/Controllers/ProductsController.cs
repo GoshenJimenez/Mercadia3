@@ -1,4 +1,5 @@
-﻿using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain;
+﻿using GoshenJimenez.Mercadia3.Web.Areas.Manage.ViewModels.Products;
+using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain;
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models;
 using GoshenJimenez.Mercadia3.Web.ViewModels.Products;
 using Microsoft.AspNetCore.Mvc;
@@ -100,6 +101,32 @@ namespace GoshenJimenez.Mercadia3.Web.Areas.Manage.Controllers
             }
 
             return View(result);
+        }
+
+
+        [HttpGet("manage/products/create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost("/manage/products/create")]
+        public IActionResult Create(CreateViewModel model)
+        {
+            Product product = new Product()
+            {
+                Id = Guid.NewGuid(),
+                Description = model.Description,
+                CategoryId = model.CategoryId,
+                Name = model.Name,
+                Price = model.Price,
+                TagLine = model.TagLine
+            };
+
+            _context.Products.Add(product);
+            _context.SaveChanges();
+
+            return RedirectPermanent("/manage/products");
         }
     }
 }
