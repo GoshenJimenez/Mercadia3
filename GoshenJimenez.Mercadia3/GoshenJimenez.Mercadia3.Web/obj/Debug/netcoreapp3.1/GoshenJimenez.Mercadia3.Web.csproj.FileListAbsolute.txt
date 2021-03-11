@@ -134,3 +134,5 @@ C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Views\Products\Product.cshtml.g.cs
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_partialHeader.cshtml.g.cs
 C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Products\Index.cshtml.g.cs
+C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Products\Create.cshtml.g.cs
+C:\Users\goshe\OneDrive\Documents\Personal\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3\GoshenJimenez.Mercadia3.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Products\Update.cshtml.g.cs
