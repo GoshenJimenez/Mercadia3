@@ -1,4 +1,5 @@
-﻿using GoshenJimenez.Mercadia3.Web.Areas.Manage.ViewModels.Products;
+﻿using GoshenJimenez.Mercadia3.Web.Areas.Manage.ViewModels;
+using GoshenJimenez.Mercadia3.Web.Areas.Manage.ViewModels.Products;
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain;
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models;
 using GoshenJimenez.Mercadia3.Web.ViewModels.Products;
@@ -166,6 +167,27 @@ namespace GoshenJimenez.Mercadia3.Web.Areas.Manage.Controllers
                 product.UpdatedAt = DateTime.UtcNow;
 
                 _context.Products.Update(product);
+                _context.SaveChanges();
+            }
+            else
+            {
+                //TODO: Error
+            }
+
+
+            return RedirectPermanent("/manage/products");
+
+        }
+
+
+        [HttpPost("/manage/products/delete")]
+        public IActionResult Remove(IdViewModel model)
+        {
+            Product product = _context.Products.FirstOrDefault(p => p.Id == model.Id);
+
+            if (product != null)
+            {            
+                _context.Products.Remove(product);
                 _context.SaveChanges();
             }
             else
