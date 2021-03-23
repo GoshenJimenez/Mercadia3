@@ -4,27 +4,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<section id="contact-us" class="contact-us section">
+    <div class="container">
+        <div class="contact-head">
+            <div class="row">
+                <div class="col-lg-8 col-12">
+                    <div class="form-main">
+                        <div class="title">
+                            <h4>Create product</h4>
+                            <h3>Create a new product</h3>
+                        </div>
+                        <form class="form" action="/manage/products/create" method="post">
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Product Name@*<span>*</span>*@</label>
+                                        <input name="Name" type="text" id="name" asp-for="Name" placeholder="Enter product name">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="CategoryId" value="02b92adc-c0dc-4a87-9aa8-df5d90cf2a01" />
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Tag line</label>
+                                        <input type="text" class="form-control" id="tagLine" asp-for="TagLine" name="TagLine" placeholder="Enter product brief description">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group message">
+                                        <label>Description</label>
+                                        <textarea asp-for="Description" class="form-control" id="description" name="Description" placeholder="Enter product full description">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input type="number" class="form-control" id="price" asp-for="Price" name="Price" placeholder="Enter product price">
+                                    </div>
+                                </div>
 
+                                <div class="col-12">
+                                    <div class="form-group button">
+                                        <button type="submit" class="btn">Submit</button>
+                                        <a href="~/manage/products" class="btn" style="text-decoration:none;color:#ffffff;">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="single-head">
+                        <div class="single-info">
 
-<form action="/manage/products/create" method="post" class="form">
-    <div class="form-group">
-        <label for="Name">Name</label>
-        <input type="text" class="form-control" id="name" asp-for="Name" name="Name" placeholder="Enter product name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="TagLine">TagLine</label>
-        <input type="text" class="form-control" id="tagLine" asp-for="TagLine" name="TagLine" placeholder="Enter product brief description">
-    </div>
-    <div class="form-group">
-        <label for="Description">Description</label>
-        <textarea asp-for="Description" class="form-control" id="description" name="Description" placeholder="Enter product full description">
-        </textarea>
-    </div>
-    <div class="form-group">
-        <label for="Price">Price</label>
-        <input type="number" class="form-control" id="price" asp-for="Price" name="Price" placeholder="Enter product price">
-    </div>
-    <input type="hidden" name="CategoryId" value="02b92adc-c0dc-4a87-9aa8-df5d90cf2a01" />
-    <button type="submit" class="btn btn-success">Submit</button>
-    <a href="~/manage/products" class="btn btn-danger">Cancel</a>
-</form>
+</section>
