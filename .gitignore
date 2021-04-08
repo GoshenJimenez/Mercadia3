@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.vs
+/GoshenJimenez.Mercadia3/GoshenJimenez.Mercadia3.Web/bin
+/GoshenJimenez.Mercadia3/GoshenJimenez.Mercadia3.Web/obj
+*.suo
