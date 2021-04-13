@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "GoshenJimenez.Mercadia3.Web/1.0.0": {
         "dependencies": {
+          "BCrypt-Core": "2.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.13",
           "Microsoft.EntityFrameworkCore.Design": "3.1.11",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.11",
@@ -310,6 +311,17 @@
         },
         "compile": {
           "GoshenJimenez.Mercadia3.Web.dll": {}
+        }
+      },
+      "BCrypt-Core/2.0.0": {
+        "runtime": {
+          "lib/netcoreapp2.0/BCrypt-Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/BCrypt-Core.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -3497,6 +3509,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BCrypt-Core/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g6CJ6ixfOjyLkyuQIQn61Isb4ee+0Q0eqsNn0fHB+s5kbChNU9zETXafDD83SN+1eU/QWPSL5f2lTM0PG9mGVg==",
+      "path": "bcrypt-core/2.0.0",
+      "hashPath": "bcrypt-core.2.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",

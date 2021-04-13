@@ -17,6 +17,8 @@ namespace GoshenJimenez.Mercadia3.Web.Infrastructure.Domain
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -96,6 +98,70 @@ namespace GoshenJimenez.Mercadia3.Web.Infrastructure.Domain
 
             modelBuilder.Entity<Product>()
                .HasData(product);
+
+            List<User> users = new List<User>(){
+                new User()
+                {
+                    Id = Guid.Parse("628019e2-665b-4a4c-ae23-4490ffd4fa00"),
+                    FirstName = "Jace",
+                    LastName = "Beleren",
+                    EmailAddress = "jbeleren@mailinator.com"
+                },
+                new User()
+                {
+                    Id = Guid.Parse("628019e2-665b-4a4c-ae23-4490ffd4fa01"),
+                    FirstName = "Liliana",
+                    LastName = "Vess",
+                    EmailAddress = "lvess@mailinator.com"
+                },
+                new User()
+                {
+                    Id = Guid.Parse("628019e2-665b-4a4c-ae23-4490ffd4fa02"),
+                    FirstName = "Chandra",
+                    LastName = "Nalaar",
+                    EmailAddress = "cnalaar@mailinator.com"
+                }
+            };
+
+            modelBuilder.Entity<User>()
+                .HasData(users);
+
+            List<UserLogin> userLogins = new List<UserLogin>();
+
+            foreach(User user in users)
+            {
+                var salt = BCrypt.BCryptHelper.GenerateSalt();
+
+                userLogins.Add(new UserLogin()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = user.Id,
+                    Key = "Password",
+                    Value = BCrypt.BCryptHelper.HashPassword("1234", salt),
+                    Type = LoginType.Email
+                });
+
+                userLogins.Add(new UserLogin()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = user.Id,
+                    Key = "LoginStatus",
+                    Value = "Active", //Active, LockedOut
+                    Type = LoginType.General
+                });
+
+                userLogins.Add(new UserLogin()
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = user.Id,
+                    Key = "LoginRetries",
+                    Value = "0",
+                    Type = LoginType.Email
+                });
+            };
+
+            modelBuilder.Entity<UserLogin>()
+                .HasData(userLogins);
         }
     }
 }

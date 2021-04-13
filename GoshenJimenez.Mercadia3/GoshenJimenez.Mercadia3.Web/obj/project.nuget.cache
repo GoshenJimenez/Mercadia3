@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vb+KYHQSGfo4S742sfzFCKEoe78IZRzRzHsi/DJUENnnPJ/MPtwyc7OCsPx10Z3EzIuH3U3mTPm83/XpfV+lqQ==",
+  "dgSpecHash": "inYUWG2AoA4HUHhfH4+ZeG7zz5Uyr1+/vW0QpxXkcUCGshOiouOG0luaPTLoYJQYyfKhINA1dAcUWEUFsBA8nw==",
   "success": true,
   "projectFilePath": "C:\\Users\\goshe\\OneDrive\\Documents\\Personal\\GoshenJimenez.Mercadia3\\GoshenJimenez.Mercadia3\\GoshenJimenez.Mercadia3.Web\\GoshenJimenez.Mercadia3.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\goshe\\.nuget\\packages\\bcrypt-core\\2.0.0\\bcrypt-core.2.0.0.nupkg.sha512",
     "C:\\Users\\goshe\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\goshe\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.13\\microsoft.aspnetcore.mvc.razor.extensions.3.1.13.nupkg.sha512",
     "C:\\Users\\goshe\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.13\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.13.nupkg.sha512",

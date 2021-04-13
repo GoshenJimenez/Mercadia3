@@ -1,0 +1,60 @@
+﻿@model GoshenJimenez.Mercadia3.Web.ViewModels.Account.RegisterViewModel;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="contact-us" class="contact-us section">
+    <div class="container">
+        <div class="contact-head">
+            <div class="row">
+                <div class="col-lg-8 col-12">
+                    <div class="form-main">
+                        <div class="title">
+                            <h4>Register</h4>
+                            <h3>Sign up for your own account</h3>
+                        </div>
+                        <form class="form" action="/account/register" method="post">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input name="EmailAddress" type="email" id="emailAddress" asp-for="EmailAddress" placeholder="Enter email address">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input name="FirstName" type="text" id="firstName" asp-for="FirstName" placeholder="Enter first name">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input name="LastName" type="text" id="lastName" asp-for="LastName" placeholder="Enter last name">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group button">
+                                        <button type="submit" class="btn">Submit</button>
+                                        <a href="~/account/login" class="btn" style="text-decoration:none;color:#ffffff;">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12">
+                    <div class="single-head">
+                        <div class="single-info">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
