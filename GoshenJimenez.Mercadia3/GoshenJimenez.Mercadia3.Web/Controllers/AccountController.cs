@@ -101,6 +101,95 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             return RedirectToAction("Login");
         }
 
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("Error", "Invalid Login");
+                return View(model);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.EmailAddress.ToLower() == model.EmailAddress.ToLower());
+
+            if(user == null)
+            {
+                ModelState.AddModelError("Error", "Invalid Login");
+                return View(model);
+            }
+            else
+            {
+                UserLogin userPassword = _context.UserLogins.FirstOrDefault(l =>
+                                                                        l.UserId == user.Id
+                                                                    &&  l.Key.ToLower() == "password"
+                                                                    &&  l.Type == LoginType.Email
+                                                                );
+
+
+                UserLogin loginRetries = _context.UserLogins.FirstOrDefault(l =>
+                                                                l.UserId == user.Id
+                                                            && l.Key.ToLower() == "loginretries"
+                                                            && l.Type == LoginType.General
+                                                        );
+
+                UserLogin loginStatus = _context.UserLogins.FirstOrDefault(l =>
+                                                                l.UserId == user.Id
+                                                            && l.Key.ToLower() == "loginstatus"
+                                                            && l.Type == LoginType.General
+                                                        );
+
+                if (userPassword != null)
+                {
+                    if(BCrypt.BCryptHelper.CheckPassword(model.Password, userPassword.Value) == true)
+                    {
+                        loginRetries.Value = "0";
+                        _context.SaveChanges();
+
+                        if (loginStatus.Value.ToLower() == "active")
+                        {
+                            //SIGN IN
+                        }else if(loginStatus.Value.ToLower() == "needstochangepassword")
+                        {
+                            //SIGN IN
+                            RedirectToAction("ChangePassword");
+                        }
+                        else if (loginStatus.Value.ToLower() == "lockedout")
+                        {
+                            ModelState.AddModelError("Error", "Your account is locked out.");
+                            return View(model);
+                        }
+                    }
+                    else
+                    {
+                        var retries = (int.Parse(loginRetries.Value) + 1);
+                        loginRetries.Value = retries.ToString();
+
+                        if(retries > 2)
+                        {
+                            loginStatus.Value = "LockedOut";
+
+                            _context.SaveChanges();
+
+                            ModelState.AddModelError("Error", "Your account is locked out.");
+                            return View(model);
+                        }
+                    }
+                }
+
+                ModelState.AddModelError("Error", "Invalid Login.");
+                return View(model);
+            }
+        }
+
+        
+
         private Random random = new Random();
         private string RandomString(int length)
         {
