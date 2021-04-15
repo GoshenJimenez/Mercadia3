@@ -170,8 +170,9 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
                     {
                         var retries = (int.Parse(loginRetries.Value) + 1);
                         loginRetries.Value = retries.ToString();
+                        _context.SaveChanges();
 
-                        if(retries > 2)
+                        if (retries > 2)
                         {
                             loginStatus.Value = "LockedOut";
 
