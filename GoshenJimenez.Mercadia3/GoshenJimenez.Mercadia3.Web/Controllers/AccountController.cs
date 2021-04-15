@@ -2,9 +2,12 @@
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models;
 using GoshenJimenez.Mercadia3.Web.ViewModels.Account;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace GoshenJimenez.Mercadia3.Web.Controllers
@@ -13,9 +16,16 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
     {
 
         private readonly DefaultDbContext _context;
-        public AccountController(DefaultDbContext context)
+        protected readonly IConfiguration _config;
+        private string emailUserName;
+        private string emailPassword;
+        public AccountController(DefaultDbContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
+            var emailConfig = this._config.GetSection("Email");
+            emailUserName = (emailConfig["Username"]).ToString();
+            emailPassword = (emailConfig["Password"]).ToString();
         }
 
         [HttpGet]
@@ -78,6 +88,15 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             _context.SaveChanges();
 
             //SEND EMAIL
+            this.SendNow(
+                             "Hi " + user.FullName + @",
+                             Welcome to Mercadia III. Please use this one-time password to login to your account: " + password + @".
+                             Regards,
+                             Mercadia III",
+                             model.EmailAddress,
+                             user.FullName,
+                             "Welcome to Mercadia III!!!"
+                        );
 
             return RedirectToAction("Login");
         }
@@ -88,6 +107,34 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private void SendNow(string message, string messageTo, string messageName, string emailSubject)
+        {
+            var fromAddress = new MailAddress(emailUserName, "CSM Bataan Apps");
+            string body = message;
+
+
+            ///https://support.google.com/accounts/answer/6010255?hl=en
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, emailPassword),
+                Timeout = 20000
+            };
+
+            var toAddress = new MailAddress(messageTo, messageName);
+
+            smtp.Send(new MailMessage(fromAddress, toAddress)
+            {
+                Subject = emailSubject,
+                Body = body,
+                IsBodyHtml = true
+            });
         }
     }
 }
