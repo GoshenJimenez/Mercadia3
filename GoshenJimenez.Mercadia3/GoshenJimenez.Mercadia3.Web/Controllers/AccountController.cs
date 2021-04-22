@@ -199,7 +199,76 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             }
         }
 
-        
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("Error", "All fields are required");
+                return View(model);
+            };
+
+            if(model.ConfirmPassword != model.NewPassword)
+            {
+                ModelState.AddModelError("Error", "New password and Confirm password does not match.");
+                return View(model);
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.Id == this.User.GetId());
+
+            if(user == null)
+            {
+                ModelState.AddModelError("Error", "Invalid Login");
+                return RedirectToAction("Login");
+            }
+            else
+            {
+
+                UserLogin userPassword = _context.UserLogins.FirstOrDefault(l =>
+                                                                        l.UserId == user.Id
+                                                                    && l.Key.ToLower() == "password"
+                                                                    && l.Type == LoginType.Email
+                                                                );
+
+                if(userPassword != null)
+                {
+                    if (BCrypt.BCryptHelper.CheckPassword(model.OldPassword, userPassword.Value) == true)
+                    {
+                        UserLogin loginStatus = _context.UserLogins.FirstOrDefault(l =>
+                                                           l.UserId == user.Id
+                                                       && l.Key.ToLower() == "loginstatus"
+                                                       && l.Type == LoginType.General
+                                                   );
+                        if(loginStatus!= null)
+                        {
+                            loginStatus.Value = "Active";
+                        }
+
+                        var salt = BCrypt.BCryptHelper.GenerateSalt();
+                       
+                        var hashedPassword = BCrypt.BCryptHelper.HashPassword(model.NewPassword, salt);
+
+                        userPassword.Value = hashedPassword;
+
+                        _context.SaveChanges();
+
+                        return RedirectPermanent("~/products");
+                    }
+                }
+
+                ModelState.AddModelError("Error", "Invalid Login");
+                return RedirectToAction("Login");
+
+            }
+
+            return View(model);
+        }
 
         private Random random = new Random();
         private string RandomString(int length)
