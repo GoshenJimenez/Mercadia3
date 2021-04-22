@@ -41,6 +41,8 @@ GoshenJimenez.Mercadia3.Web/debug
 GoshenJimenez.Mercadia3.Web/Debug
 GoshenJimenez.Mercadia3.Web/.vs
 vs/
+.vs
+.obj
 /vs
 /obj
 /GoshenJimenez.Mercadia3/obj
