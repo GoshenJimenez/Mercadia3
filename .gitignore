@@ -32,6 +32,21 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+obj/
+bin/
+debug/
+GoshenJimenez.Mercadia3.Web/obj
+GoshenJimenez.Mercadia3.Web/bin
+GoshenJimenez.Mercadia3.Web/debug
+GoshenJimenez.Mercadia3.Web/Debug
+GoshenJimenez.Mercadia3.Web/.vs
+vs/
+/vs
+/obj
+/GoshenJimenez.Mercadia3/obj
+/GoshenJimenez.Mercadia3/bin
+/GoshenJimenez.Mercadia3/debug
+/GoshenJimenez.Mercadia3/Debug
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
