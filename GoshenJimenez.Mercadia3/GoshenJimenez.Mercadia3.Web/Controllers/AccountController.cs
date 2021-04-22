@@ -1,6 +1,9 @@
 ﻿using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain;
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models;
+using GoshenJimenez.Mercadia3.Web.Infrastructure.Security;
 using GoshenJimenez.Mercadia3.Web.ViewModels.Account;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -8,7 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Claims;
 using System.Threading.Tasks;
+
 
 namespace GoshenJimenez.Mercadia3.Web.Controllers
 {
@@ -54,14 +59,15 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             List<UserLogin> userLogins = new List<UserLogin>();
 
             var salt = BCrypt.BCryptHelper.GenerateSalt();
-            var password = BCrypt.BCryptHelper.HashPassword(RandomString(6), salt);
+            var password = RandomString(6);
+            var hashedPassword = BCrypt.BCryptHelper.HashPassword(password, salt);
 
             userLogins.Add(new UserLogin()
             {
                 Id = Guid.NewGuid(),
                 UserId = user.Id,
                 Key = "Password",
-                Value = password,
+                Value = hashedPassword,
                 Type = LoginType.Email
             });
 
@@ -80,7 +86,7 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
                 UserId = user.Id,
                 Key = "LoginRetries",
                 Value = "0",
-                Type = LoginType.Email
+                Type = LoginType.General
             });
 
             _context.Users.Add(user);
@@ -109,7 +115,7 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -155,10 +161,14 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
                         if (loginStatus.Value.ToLower() == "active")
                         {
                             //SIGN IN
-                        }else if(loginStatus.Value.ToLower() == "needstochangepassword")
+                           await SignIn(user);
+                           return RedirectPermanent("~/products/index");
+                        }
+                        else if(loginStatus.Value.ToLower() == "needstochangepassword")
                         {
                             //SIGN IN
-                            RedirectToAction("ChangePassword");
+                            await SignIn(user);
+                            return RedirectToAction("ChangePassword");
                         }
                         else if (loginStatus.Value.ToLower() == "lockedout")
                         {
@@ -225,6 +235,29 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
                 Body = body,
                 IsBodyHtml = true
             });
+        }
+
+        public async Task SignIn(User user)
+        {
+            var identity = new System.Security.Claims.ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+            identity.AddClaim(new Claim(ClaimTypes.Name, user.FullName));
+            identity.AddClaim(new Claim(ClaimTypes.Email, user.EmailAddress));
+
+            var principal = new ClaimsPrincipal(identity);
+
+            var authProperties = new AuthenticationProperties
+            {
+                AllowRefresh = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
+                IsPersistent = true,
+                IssuedUtc = DateTimeOffset.UtcNow
+            };
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
+
+            //WebUser.SetUser(user);
         }
     }
 }
