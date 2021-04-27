@@ -64,6 +64,8 @@ namespace GoshenJimenez.Mercadia3.Web
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddHttpContextAccessor();
+
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

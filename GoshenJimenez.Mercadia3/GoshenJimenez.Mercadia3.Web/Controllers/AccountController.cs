@@ -4,6 +4,7 @@ using GoshenJimenez.Mercadia3.Web.Infrastructure.Security;
 using GoshenJimenez.Mercadia3.Web.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -107,13 +108,14 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             return RedirectToAction("Login");
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -199,12 +201,14 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult ChangePassword(ChangePasswordViewModel model)
         {
