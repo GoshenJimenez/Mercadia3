@@ -54,7 +54,8 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
                 Id = Guid.NewGuid(),
                 EmailAddress = model.EmailAddress,
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                Role = Role.Customer,
             };
 
             List<UserLogin> userLogins = new List<UserLogin>();
@@ -157,7 +158,10 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
                 {
                     if(BCrypt.BCryptHelper.CheckPassword(model.Password, userPassword.Value) == true)
                     {
-                        loginRetries.Value = "0";
+                        if (loginRetries != null)
+                        {
+                            loginRetries.Value = "0";
+                        }
                         _context.SaveChanges();
 
                         if (loginStatus.Value.ToLower() == "active")
@@ -317,6 +321,7 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             identity.AddClaim(new Claim(ClaimTypes.Name, user.FullName));
             identity.AddClaim(new Claim(ClaimTypes.Email, user.EmailAddress));
+            identity.AddClaim(new Claim(ClaimTypes.Role, user.Role.ToString()));
 
             var principal = new ClaimsPrincipal(identity);
 
@@ -331,6 +336,11 @@ namespace GoshenJimenez.Mercadia3.Web.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
 
             //WebUser.SetUser(user);
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

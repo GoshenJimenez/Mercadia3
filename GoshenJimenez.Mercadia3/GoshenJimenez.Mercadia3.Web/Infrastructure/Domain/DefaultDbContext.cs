@@ -105,21 +105,24 @@ namespace GoshenJimenez.Mercadia3.Web.Infrastructure.Domain
                     Id = Guid.Parse("628019e2-665b-4a4c-ae23-4490ffd4fa00"),
                     FirstName = "Jace",
                     LastName = "Beleren",
-                    EmailAddress = "jbeleren@mailinator.com"
+                    EmailAddress = "jbeleren@mailinator.com",
+                    Role = Role.Admin,
                 },
                 new User()
                 {
                     Id = Guid.Parse("628019e2-665b-4a4c-ae23-4490ffd4fa01"),
                     FirstName = "Liliana",
                     LastName = "Vess",
-                    EmailAddress = "lvess@mailinator.com"
+                    EmailAddress = "lvess@mailinator.com",
+                    Role = Role.Customer,
                 },
                 new User()
                 {
                     Id = Guid.Parse("628019e2-665b-4a4c-ae23-4490ffd4fa02"),
                     FirstName = "Chandra",
                     LastName = "Nalaar",
-                    EmailAddress = "cnalaar@mailinator.com"
+                    EmailAddress = "cnalaar@mailinator.com",
+                    Role = Role.Customer,
                 }
             };
 

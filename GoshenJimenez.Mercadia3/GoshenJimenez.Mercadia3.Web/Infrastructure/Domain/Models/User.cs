@@ -20,5 +20,7 @@ namespace GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models
                 return (this.FirstName + " " + this.LastName);
             }
         }
+
+        public Role Role { get; set; }
     }
 }

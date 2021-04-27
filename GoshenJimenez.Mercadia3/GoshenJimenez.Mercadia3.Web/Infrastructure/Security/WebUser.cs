@@ -18,7 +18,6 @@ namespace GoshenJimenez.Mercadia3.Web.Infrastructure.Security
         {
             return user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
         }
-
         public static Guid GetId(this ClaimsPrincipal user)
         {
             return Guid.Parse(user.FindFirstValue(ClaimTypes.NameIdentifier));

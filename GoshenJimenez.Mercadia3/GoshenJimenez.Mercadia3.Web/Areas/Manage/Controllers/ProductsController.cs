@@ -3,6 +3,7 @@ using GoshenJimenez.Mercadia3.Web.Areas.Manage.ViewModels.Products;
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain;
 using GoshenJimenez.Mercadia3.Web.Infrastructure.Domain.Models;
 using GoshenJimenez.Mercadia3.Web.ViewModels.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace GoshenJimenez.Mercadia3.Web.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly DefaultDbContext _context;
